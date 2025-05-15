@@ -19,10 +19,10 @@
       <img class="card-img" src="../assets/freaky.png" alt="Festival Card" />
     </div>
     <div class="festival-card">
-      <img src="https://via.placeholder.com/300x200" alt="Placeholder">
+      <img class="card-img" src="../assets/Sowhatmusic.png" alt="Festival Card" />
     </div>
     <div class="festival-card">
-      <img src="https://via.placeholder.com/300x200" alt="Placeholder">
+      <img class="card-img" src="../assets/lightsNights.png" alt="Festival Card" />
     </div>
   </div>
 </template>
