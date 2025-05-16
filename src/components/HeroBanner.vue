@@ -242,21 +242,21 @@ body, html {
   }
 
   .hero-text-block {
-    top: 80px;
+    top: 100px;
     left: 20px;
     max-width: 90%;
   }
 
   .hero-text-block .line-one {
-    font-size: 1rem;
+    font-size: .5rem;
   }
 
   .hero-text-block .line-two {
-    font-size: 1.5rem;
+    font-size: .75rem;
   }
 
   .hero-text-block .line-three {
-    font-size: 2rem;
+    font-size: 1rem;
     margin-top: -5px;
   }
 
