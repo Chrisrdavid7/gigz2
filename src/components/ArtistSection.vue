@@ -95,7 +95,7 @@ export default {
 
 .middle-line {
   position: absolute;
-  top: 10%;
+  top: 22%;
   left: 50%;
   transform: translateX(-50%);
   height: 100rem;
