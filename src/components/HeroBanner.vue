@@ -1,18 +1,19 @@
 <template>
   <div class="hero-container">
     <div class="hero-img-wrapper">
-      <img class="hero-img" src="../assets/embersBanner.png" alt="Hero Banner" />
+      <img class="hero-img" :src="slides[currentSlide].img" alt="Hero Banner" />
 
-      <!-- Text block -->
+      <!-- Dynamic Text Block -->
       <div class="hero-text-block">
-        <span class="line-one">FROM DENVER TO</span>
-        <span class="line-two">2.5M GLOBAL</span>
-        <span class="line-three">TICKET SALES</span>
+        <span class="line-one">{{ slides[currentSlide].lineOne }}</span>
+        <span class="line-two">{{ slides[currentSlide].lineTwo }}</span>
+        <span class="line-three">{{ slides[currentSlide].lineThree }}</span>
       </div>
 
+      <!-- Dynamic Logo & Text -->
       <div class="bottom-right-wrapper">
-        <img class="bottom-right-logo" src="../assets/gigzAc1.png" alt="Gigz Logo" />
-        <span class="bottom-right-text">Ember Shores</span>
+        <img class="bottom-right-logo" :src="slides[currentSlide].logo" alt="Logo" />
+        <span class="bottom-right-text">{{ slides[currentSlide].label }}</span>
       </div>
     </div>
 
@@ -39,6 +40,46 @@ export default {
   name: 'HeroBanner',
   components: {
     FestivalCards
+  },
+  data() {
+    return {
+      currentSlide: 0,
+      carouselInterval: null,
+      slides: [
+        {
+          img: require('../assets/embersBanner.png'),
+          lineOne: 'FROM DENVER TO',
+          lineTwo: '2.5M GLOBAL',
+          lineThree: 'TICKET SALES',
+          logo: require('../assets/gigzAc1.png'),
+          label: 'Ember Shores'
+        },
+        {
+          img: require('../assets/para2.png'),
+          lineOne: 'PERFORM',
+          lineTwo: 'ANYWHERE',
+          lineThree: '',
+          logo: require('../assets/gigzAc3.png'),
+          label: 'Paradise Blue'
+        },
+        {
+          img: require('../assets/para3.png'),
+          lineOne: 'THE',
+          lineTwo: 'BIGGEST',
+          lineThree: 'STAGE',
+          logo: require('../assets/gigzAc1.png'),
+          label: 'Red Rocks Amphitheatre'
+        }
+      ]
+    }
+  },
+  mounted() {
+    this.carouselInterval = setInterval(() => {
+      this.currentSlide = (this.currentSlide + 1) % this.slides.length
+    }, 5000)
+  },
+  beforeUnmount() {
+    clearInterval(this.carouselInterval)
   }
 }
 </script>
