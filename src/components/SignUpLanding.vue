@@ -384,4 +384,72 @@ button {
 .bottom-transition {
   bottom: 0; /* Align to the bottom of the signup section */
 }
+@media (max-width: 768px) {
+  .photo-section {
+    display: none;
+  }
+
+  .signup-section {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+    padding: 40px 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .names-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .name-field {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .email,
+  .password,
+  .password-confirmed {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .additional-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkbox-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
+  }
+
+  .custom-checkbox {
+    text-align: left;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 4.5rem;
+  }
+
+  .login-prompt {
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .signup-header {
+    position: relative;
+    font-size: 32px;
+   margin-top: 4.5rem;
+  }
+}
+
 </style>
