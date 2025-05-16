@@ -13,7 +13,7 @@
       <a href="https://twitter.com/playgigz" aria-label="Twitter" class="social-icon">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="https://twitter.com/playgigz" aria-label="Instagram" class="social-icon">
+      <a href="https://www.instagram.com/playgigz/" aria-label="Instagram" class="social-icon">
         <i class="fab fa-instagram"></i>
       </a>
       <!-- <a href="#" aria-label="Spotify" class="social-icon">
