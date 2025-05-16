@@ -242,21 +242,21 @@ body, html {
   }
 
   .hero-text-block {
-    top: 100px;
+    top: 80px;
     left: 20px;
     max-width: 90%;
   }
 
   .hero-text-block .line-one {
-    font-size: .5rem;
+    font-size: 1rem;
   }
 
   .hero-text-block .line-two {
-    font-size: .75rem;
+    font-size: 1.5rem;
   }
 
   .hero-text-block .line-three {
-    font-size: 1rem;
+    font-size: 2rem;
     margin-top: -5px;
   }
 
@@ -288,20 +288,20 @@ body, html {
   }
 
   .hero-text-block {
-    top: 30px;
+    top: 80px;
     left: 15px;
   }
 
   .hero-text-block .line-one {
-    font-size: 1.4rem;
+    font-size: .7rem;
   }
 
   .hero-text-block .line-two {
-    font-size: 1.9rem;
+    font-size: 1rem;
   }
 
   .hero-text-block .line-three {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .bottom-right-logo {
