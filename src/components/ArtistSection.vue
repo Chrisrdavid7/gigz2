@@ -14,30 +14,28 @@
     </div>
 
     <div class="split-section">
-       <div class="split-row">
-      <div class="column left">
-      <h3>Tour Creation</h3>
-      <p>Streamline gigs with our precision AI scheduling and planning tool</p>
-     </div>
-     <div class="column right">
-      <h3>Analytics Dashboard</h3>
-      <p>Navigate your live career trajectory with our unparalleled, AI-enhanced, comprehensive control panel</p>
-       </div>
+      <div class="split-row">
+        <div class="column left">
+          <h3>Tour Creation</h3>
+          <p>Streamline gigs with our precision AI scheduling and planning tool</p>
+        </div>
+        <div class="column right">
+          <h3>Analytics Dashboard</h3>
+          <p>Navigate your live career trajectory with our unparalleled, AI-enhanced, comprehensive control panel</p>
+        </div>
       </div>
 
-         <div class="split-row">
+      <div class="split-row">
         <div class="column left">
-      <h3>Venue Selection</h3>
-      <p>AI sifts through millions of data points to pinpoint your ideal performance venue</p>
-          </div>
+          <h3>Venue Selection</h3>
+          <p>AI sifts through millions of data points to pinpoint your ideal performance venue</p>
+        </div>
         <div class="column right">
-      <h3>Innovative Placements</h3>
-      <p>Secure exclusive spots on the globe's most prestigious stages</p>
+          <h3>Innovative Placements</h3>
+          <p>Secure exclusive spots on the globe's most prestigious stages</p>
         </div>
       </div>
     </div>
-
- 
   </div>
 </template>
 
@@ -75,6 +73,11 @@ export default {
   overflow: hidden;
   color: white;
   height: 100rem;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding-bottom: 3rem;
+  }
 }
 
 .background-image {
@@ -95,10 +98,15 @@ export default {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  height: 100rem;;
+  height: 100rem;
   z-index: 1;
   pointer-events: none;
   opacity: 0.8;
+
+  @media (max-width: 768px) {
+    height: 100%;
+    max-height: 1000px;
+  }
 }
 
 .artist-tagline-container {
@@ -106,6 +114,7 @@ export default {
   justify-content: center;
   max-width: 90%;
   margin: auto;
+  padding: 2rem 1rem;
 }
 
 .tagline-wrapper {
@@ -120,6 +129,11 @@ export default {
   margin-top: 2.5em;
   width: 100%;
   height: auto;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin-top: 2em;
+  }
 }
 
 .tagline-description {
@@ -128,12 +142,17 @@ export default {
   padding: 0 1rem;
   font-family: 'Lab Grotesque', sans-serif;
   font-size: 1.1rem;
-  line-height: 3.6;
+  line-height: 2;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
 }
 
 .split-section {
-  max-width: 80rem; // reduce from full width if needed
+  max-width: 80rem;
   margin: 5rem auto;
   padding: 0 2rem;
   display: flex;
@@ -144,10 +163,14 @@ export default {
 .split-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3.4rem; // decrease this to bring columns closer
+  gap: 3.4rem;
   align-items: start;
-}
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
 
 .column {
   font-family: 'Lab Grotesque', sans-serif;
@@ -156,6 +179,11 @@ export default {
     font-size: 2.6rem;
     font-weight: 900;
     margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      text-align: center;
+    }
   }
 
   p {
@@ -163,62 +191,29 @@ export default {
     line-height: 1.6;
     font-weight: 100;
     margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+      text-align: center;
+    }
   }
 }
 
 .column.left {
   text-align: left;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 }
 
 .column.right {
   margin-top: 15rem;
   text-align: right;
-}
 
-.connecting-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-
-
-.image-copy-right,
-.image-copy-left {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 4.5em;
-}
-
-.copy-left-container,
-.copy-right-container {
-  display: block;
-  padding: 0 3rem;
-  margin-top: 10rem;
-}
-
-.copy-left-upper,
-.copy-left-lower {
-  font-family: 'Lab Grotesque', sans-serif;
-  font-weight: normal;
-  display: block;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-radius: 8px;
-
-  h5 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    font-size: 1.1rem;
-    color: #666;
-    line-height: 1.6;
+  @media (max-width: 768px) {
+    margin-top: 0;
+    text-align: center;
   }
 }
 

@@ -1,81 +1,80 @@
 <template>
   <div class="cards-container">
-    <div class="festival-card">
-      <img class="card-img" src="../assets/texas.png" alt="Festival Card" />
-    </div>
-    <div class="festival-card">
-      <img class="card-img" src="../assets/emberShores.png" alt="Festival Card" />
-    </div>
-    <div class="festival-card">
-      <img class="card-img" src="../assets/rollingLoud.png" alt="Festival Card" />
-    </div>
-    <div class="festival-card">
-      <img class="card-img" src="../assets/paradiseBlue.png" alt="Festival Card" />
-    </div>
-    <div class="festival-card">
-      <img class="card-img" src="../assets/ubbiDubbi.png" alt="Festival Card" />
-    </div>
-    <div class="festival-card">
-      <img class="card-img" src="../assets/freaky.png" alt="Festival Card" />
-    </div>
-    <div class="festival-card">
-      <img class="card-img" src="../assets/Sowhatmusic.png" alt="Festival Card" />
-    </div>
-    <div class="festival-card">
-      <img class="card-img" src="../assets/lightsNights.png" alt="Festival Card" />
+    <div class="festival-card" v-for="(img, index) in images" :key="index">
+      <img class="card-img" :src="img" alt="Festival Card" />
     </div>
   </div>
 </template>
+
 <script>
-import { ref } from 'vue'
 export default {
   name: 'FestivalCards',
-
+  data() {
+    return {
+      images: [
+        require('../assets/texas.png'),
+        require('../assets/emberShores.png'),
+        require('../assets/rollingLoud.png'),
+        require('../assets/paradiseBlue.png'),
+        require('../assets/ubbiDubbi.png'),
+        require('../assets/freaky.png'),
+        require('../assets/Sowhatmusic.png'),
+        require('../assets/lightsNights.png')
+      ]
+    }
+  }
 }
 </script>
+
 <style lang="scss">
-
-
-
 .cards-container {
   background: #000000;
   margin: 50px auto;
-  text-align: center;
   display: flex;
-  flex-wrap: nowrap;  // Prevents wrapping of items
-  justify-content: flex-start; // Aligns items to the start of the container
-  overflow-x: auto;  // Enables horizontal scrolling
-  max-width: 100%;  // Ensures the container does not exceed the width of its parent
-  padding: 10px 0;  // Adds vertical padding for visual spacing
-  -webkit-overflow-scrolling: touch; // Improves scrolling on touch devices
-  scrollbar-width: thin; // Makes scrollbar less obtrusive (Firefox)
-  scrollbar-color: #888 #000; // Customizes scrollbar colors (Firefox)
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 10px 10px;
+  gap: 75px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #000;
 
   @media (max-width: 768px) {
-    justify-content: center; // Centers items if they fit within the viewport
+    padding: 10px 15px;
+    gap: 20px;
   }
 }
 
 .festival-card {
-  flex: 0 0 auto; // Ensures that cards do not grow or shrink
-  width: 90px; // Fixed width for each card
-  margin: 0 35px; // Horizontal margin between cards
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    width: 75px;
+    height: 75px;
+  }
 }
 
 .card-img {
-  height: 90px; // Fixed height for uniformity
-  width: 100%;  // Full width of the parent container
-  object-fit: contain; // Ensures the entire image is visible without cropping
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* Style for the scrollbar on WebKit browsers */
+/* Scrollbar styling */
 .cards-container::-webkit-scrollbar {
-  height: 6px; // Height of the horizontal scrollbar
+  height: 6px;
 }
 
 .cards-container::-webkit-scrollbar-thumb {
-  background-color: #888; // Color of the scrollbar thumb
-  border-radius: 3px; // Rounded corners for the scrollbar thumb
+  background-color: #888;
+  border-radius: 3px;
 }
-
 </style>
