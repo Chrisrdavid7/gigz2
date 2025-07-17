@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="show-container">
     <div class="show-headline">
       <span>We connect artists to the biggest stages</span>
@@ -188,4 +188,4 @@ export default {
   transform: translateY(-50%); // Shifts the logo up by half its own height
 }
 
-</style>
+</style> -->
