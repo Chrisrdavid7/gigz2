@@ -1,13 +1,16 @@
 <template>
   <div class="hero-container">
     <div class="hero-img-wrapper">
-      <img class="hero-img" :src="slides[currentSlide].img" alt="Hero Banner" />
+      <!-- Background Video -->
+      <video autoplay muted loop playsinline class="hero-video">
+        <source :src="videoSrc" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      <!-- Dynamic Text Block -->
-      <div class="hero-text-block">
-        <span class="line-one">{{ slides[currentSlide].lineOne }}</span>
-        <span class="line-two">{{ slides[currentSlide].lineTwo }}</span>
-        <span class="line-three">{{ slides[currentSlide].lineThree }}</span>
+      <!-- Headline Over Video -->
+      <div class="hero-main-headline">
+        <h1>Perform at over</h1>
+        <h1 class="accent">40 festivals</h1>
       </div>
 
       <!-- Dynamic Logo & Text -->
@@ -17,24 +20,30 @@
       </div>
     </div>
 
-    <div class="hero-headline">
-      <span>PERFORM AT OVER </span><span class="accent-text">40 FESTIVALS</span>
-    </div>
-
     <FestivalCards />
 
     <div class="hero-headline2">
-      <span class="accent-text">1000 </span><span>CLUB AND THEATER SHOWS</span>
+      <div class="headline-text">
+        <span class="accent-text">1000 </span><span>CLUB AND THEATER SHOWS</span>
+      </div>
+      <div class="venue-logos">
+        <img :src="canopyLogo" alt="Canopy Club" />
+        <img :src="siloLogo" alt="Silo Dallas" />
+        <img :src="mileHighLogo" alt="Mile High Spirits" />
+      </div>
     </div>
 
-    <div class="hero-transition">
-      <img src="../assets/transition1.png" />
-    </div>
+ 
   </div>
 </template>
 
 <script>
 import FestivalCards from './FestivalCards'
+import asapVideo from '../videos/asapRolling.mp4'
+
+const canopyLogo = require('../logos/canopy.png')
+const siloLogo = require('../logos/silo.jpg')
+const mileHighLogo = require('../logos/mile.png')
 
 export default {
   name: 'HeroBanner',
@@ -43,11 +52,14 @@ export default {
   },
   data() {
     return {
+      videoSrc: asapVideo,
+      canopyLogo,
+      siloLogo,
+      mileHighLogo,
       currentSlide: 0,
       carouselInterval: null,
       slides: [
         {
-          img: require('../assets/embersBanner.png'),
           lineOne: 'FROM DENVER TO',
           lineTwo: '2.5M GLOBAL',
           lineThree: 'TICKET SALES',
@@ -55,7 +67,6 @@ export default {
           label: 'Ember Shores'
         },
         {
-          img: require('../assets/para2.png'),
           lineOne: 'PERFORM',
           lineTwo: 'ANYWHERE',
           lineThree: '',
@@ -63,7 +74,6 @@ export default {
           label: 'Paradise Blue'
         },
         {
-          img: require('../assets/para3.png'),
           lineOne: 'THE',
           lineTwo: 'BIGGEST',
           lineThree: 'STAGE',
@@ -120,196 +130,105 @@ body, html {
 .hero-img-wrapper {
   position: relative;
   width: 100%;
-  margin: auto;
+  height: 100vh;
+  margin-bottom: 1rem;
+  overflow: hidden;
 }
 
-.hero-img {
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 780px;
+  height: 100vh;
   object-fit: cover;
+  z-index: 0;
 }
 
-/* TEXT BLOCK */
-.hero-text-block {
+.hero-main-headline {
   position: absolute;
-  top: 180px;
-  left: 125px;
-  display: flex;
-  flex-direction: column;
-  color: #c0961a;
-  max-width: 600px;
+  top: 75%;
+  left: 8%;
+  z-index: 2;
+  color: white;
   text-align: left;
-  letter-spacing: -0.04em;
+
+  h1 {
+    font-family: 'Lab Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 4vw;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .accent {
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 6vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 8vw;
+    }
+  }
 }
 
-.hero-text-block .line-one {
-  font-size: 2.6rem;
-  font-weight: 800;
-}
 
-.hero-text-block .line-two {
-  font-size: 3.8rem;
-  font-weight: 900;
-  color: #c0961a;
-  line-height: 1.2;
-}
 
-.hero-text-block .line-three {
-  font-size: 4rem;
-  font-weight: 900;
-  color: #c0961a;
-  line-height: 1.2;
-  margin-top: -10px;
-}
-
-.bottom-right-wrapper {
-  position: absolute;
-  bottom: 30px;
-  right: 100px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  z-index: 10;
-}
-
-.bottom-right-logo {
-  width: 35px;
-  height: auto;
-}
-
-.bottom-right-text {
-  font-family: 'Lab Grotesque', sans-serif;
-  color: #9d8d8d;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-
-.hero-transition {
-  margin-top: 50px;
-  background: #000000;
-  width: 100%;
-}
-
-.hero-headline {
-  font-family: 'Lab Grotesque', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 10px;
-  letter-spacing: 0.5em;
-  text-align: center;
-  color: #ffffff;
-  margin-top: 30px;
-  margin-bottom: -15px;
-}
 
 .hero-headline2 {
   font-family: 'Lab Grotesque', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 10px;
-  letter-spacing: 1em;
   text-align: center;
   color: #ffffff;
-  margin-top: -15px;
-  margin-bottom: -15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .headline-text {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1em;
+    margin-bottom: 60px;
+  }
+
+  .venue-logos {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+
+    img {
+      height: auto;
+      max-height: 80px;
+      min-height: 28px;
+      min-width: 100px;
+      object-fit: contain;
+      img {
+  filter: none; // no inversion
 }
 
-/* RESPONSIVE STYLES */
-@media (max-width: 1024px) {
-  .hero-text-block {
-    top: 120px;
-    left: 60px;
-    max-width: 80%;
+    }
   }
 
-  .hero-text-block .line-one {
-    font-size: 2.2rem;
-  }
+  @media (max-width: 768px) {
+    .headline-text {
+      font-size: 14px;
+      letter-spacing: 0.5em;
+    }
 
-  .hero-text-block .line-two {
-    font-size: 3rem;
-  }
+    .venue-logos {
+      gap: 16px;
 
-  .hero-text-block .line-three {
-    font-size: 3.2rem;
-    margin-top: -6px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-img {
-    height: 480px;
-  }
-
-  .hero-text-block {
-    top: 80px;
-    left: 20px;
-    max-width: 90%;
-  }
-
-  .hero-text-block .line-one {
-    font-size: 1rem;
-  }
-
-  .hero-text-block .line-two {
-    font-size: 1.5rem;
-  }
-
-  .hero-text-block .line-three {
-    font-size: 2rem;
-    margin-top: -5px;
-  }
-
-  .bottom-right-wrapper {
-    bottom: 20px;
-    right: 20px;
-    gap: 4px;
-  }
-
-  .bottom-right-logo {
-    width: 28px;
-  }
-
-  .bottom-right-text {
-    font-size: 1rem;
-  }
-
-  .hero-headline,
-  .hero-headline2 {
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-img {
-    height: 360px;
-  }
-
-  .hero-text-block {
-    top: 80px;
-    left: 15px;
-  }
-
-  .hero-text-block .line-one {
-    font-size: .7rem;
-  }
-
-  .hero-text-block .line-two {
-    font-size: 1rem;
-  }
-
-  .hero-text-block .line-three {
-    font-size: 1.5rem;
-  }
-
-  .bottom-right-logo {
-    width: 24px;
-  }
-
-  .bottom-right-text {
-    font-size: 0.9rem;
+      img {
+        max-height: 28px;
+      }
+    }
   }
 }
 </style>

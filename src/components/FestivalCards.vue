@@ -12,14 +12,13 @@ export default {
   data() {
     return {
       images: [
-        require('../assets/texas.png'),
-        require('../assets/emberShores.png'),
-        require('../assets/rollingLoud.png'),
-        require('../assets/paradiseBlue.png'),
-        require('../assets/ubbiDubbi.png'),
-        require('../assets/freaky.png'),
-        require('../assets/Sowhatmusic.png'),
-        require('../assets/lightsNights.png')
+        require('../assets/wicked.jpg'), //approved
+        require('../assets/emberShores.png'),  //approved
+        require('../assets/blues.jpg'), //approved
+        require('../assets/paradiseBlue.png'),  //approved
+        require('../assets/ubbiDubbi.png'), //approved
+        require('../assets/summercamp.jpg'), //approved
+        require('../assets/lightsNights.png')  //approved
       ]
     }
   }
@@ -50,8 +49,8 @@ export default {
 .festival-card {
   flex: 0 0 auto;
   scroll-snap-align: start;
-  width: 90px;
-  height: 90px;
+  width: 125px;
+  height: 125px;
   display: flex;
   align-items: center;
   justify-content: center;

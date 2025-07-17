@@ -125,7 +125,7 @@ export default {
 }
 
 .welcome-to-gigz {
-  max-width: 600px;
+  max-width: 900px;
   margin-top: 2.5em;
   width: 100%;
   height: auto;
@@ -137,11 +137,11 @@ export default {
 }
 
 .tagline-description {
-  max-width: 700px;
-  margin-top: 1.5rem;
+  max-width: 1100px;
+  margin-top: 2.5rem;
   padding: 0 1rem;
   font-family: 'Lab Grotesque', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 2;
   color: white;
 

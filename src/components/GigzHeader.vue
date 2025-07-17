@@ -7,11 +7,14 @@
         </router-link>
       </div>
       <div class="action-container">
-        <div class="action-container-inner">
-          <!-- <router-link to="/artists" class="for-artists">FOR ARTISTS</router-link>
-          <a @click="openLoginModal" class="login-text">LOGIN</a> -->
-          <a @click="openSignUpModal" class="sign-up">SIGN UP</a>
-        </div>
+        <button @click="openSignUpModal" class="sign-up-button">
+          <span class="button-text">Join Waitlist</span>
+          <span class="button-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24">
+              <path fill="black" d="M13 5l7 7-7 7v-4h-8v-6h8V5z"/>
+            </svg>
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -21,27 +24,14 @@
 export default {
   name: 'GigzHeader',
   methods: {
-    scrollMeTo() {
-      let element = document.getElementById("mc_embed_signup");
-      element.scrollIntoView({behavior: "smooth", block: "end"});
-    },
-    openLoginModal() {
-      this.$router.push('/login'); 
-    },
     openSignUpModal() {
       this.$router.push('/signup'); 
     }
   }
 }
-if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
-    window.location.reload();
-}
-
 </script>
 
-
 <style lang="scss">
-
 @font-face {
   font-family: 'Lab Grotesque';
   src: url('/media/fonts/LabGrotesque/LabGrotesqueBold.woff') format('woff');
@@ -51,9 +41,10 @@ if (window.performance && window.performance.navigation.type === window.performa
 
 .header-container {
   font-family: 'Lab Grotesque', sans-serif;
-  font-weight: bold; // This will use the bold weight as defined in @font-face
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  font-weight: bold;
   background: transparent;
+  backdrop-filter: none;
+
   display: flex;
   justify-content: center;
   position: absolute;
@@ -66,62 +57,85 @@ if (window.performance && window.performance.navigation.type === window.performa
 .header-content {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensures all content is centered vertically */
+  align-items: center;
   height: 100%;
   max-width: 1276px;
   width: 80%;
 }
 
 .logo-container {
-  margin: 1px 0 0 -25px; /* Adjusted margin to shift logo to the left */
-  max-width: 60px; /* Adjusted max width of the logo */
-  width: 100%;
+  margin: 0;
+  max-width: 60px;
   img {
-    max-width: 100%; /* Ensures image scales within container */
+    max-width: 100%;
     height: auto;
   }
 }
 
 .action-container {
-  margin-right: -150px;
-  flex: 1; /* Flex-grow to push other elements */
   display: flex;
-  justify-content: flex-end; /* Aligns the actions to the end */
+  justify-content: flex-end;
 }
 
-.action-container-inner {
+.sign-up-button {
   display: flex;
-  justify-content: space-evenly; /* Even spacing applied here */
-  align-items: center; /* Ensures vertical centering */
-  min-width: 280px; /* Ensures a minimum width for layout stability */
-}
-
-.action-container-inner a, .action-container-inner button {
-  font-size: 12px; /* Font size set here */
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 16px 10px 20px;
   border: none;
-  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  gap: 12px;
+  font-family: 'Lab Grotesque', sans-serif;
+
+  .button-text {
+    z-index: 2;
+  }
+
+  .button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
 }
 
-.for-artists {
-  margin-right: -20px; /* Negative margin to bring closer to the next button */
-  color: #ffffff; /* White color for text */
-  background: none; /* No background for a cleaner look */
-}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 1rem;
+    width: 100%;
+  }
 
-.login-text {
-  color: #CDB776; /* Specific color for login text */
-  background: none; /* No background for login button */
-}
+  .logo-container {
+    max-width: 50px;
+  }
 
-.sign-up {
- 
-  color: #000000; /* Text color for sign up button */
-  background: #ffffff; /* White background for sign up button */
-  border-radius: 5px; /* Rounded corners for aesthetic */
-  padding: 0 10px; /* Padding inside the button */
-}
+  .sign-up-button {
+    font-size: 12px;
+    padding: 8px 14px 8px 16px;
 
+    .button-icon {
+      width: 26px;
+      height: 26px;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
 </style>
