@@ -26,6 +26,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+
 .cards-container {
   background: #000000;
   margin: 50px auto;

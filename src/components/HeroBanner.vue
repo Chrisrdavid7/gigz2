@@ -9,8 +9,8 @@
 
       <!-- Headline Over Video -->
       <div class="hero-main-headline">
-        <h1>Perform at over</h1>
-        <h1 class="accent">40 festivals</h1>
+        <h1>Perform </h1>
+        <h1 class="accent">At Over 40 Festivals</h1>
       </div>
 
       <!-- Dynamic Logo & Text -->
@@ -108,6 +108,33 @@ export default {
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Soehne';
+  src: url('/fonts/Soehne5.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/ppneuemontreal-thin.otf') format('opentype');
+  font-weight: 100; /* 'thin' is 100 */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/ppneuemontreal-medium.otf') format('opentype');
+  font-weight: 500; /* 'medium' is 500 */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/ppneuemontreal-book.otf') format('opentype');
+  font-weight: 400; /* 'medium' is 500 */
+  font-style: normal;
+}
+
 
 body, html {
   overflow-x: hidden;
@@ -154,15 +181,19 @@ body, html {
   text-align: left;
 
   h1 {
-    font-family: 'Lab Grotesque', sans-serif;
-    font-weight: 600;
-    font-size: 4vw;
+    font-family: 'Neue Montreal', sans-serif;
+  font-size: 5.5rem;
+  color: #fff;
+   letter-spacing: 0.1em;
+    font-weight: 500;
+  
     margin: 0;
     line-height: 1.1;
   }
 
   .accent {
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 500;
   }
 
   @media (max-width: 768px) {
