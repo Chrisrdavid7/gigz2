@@ -3,6 +3,7 @@
     <div class="photo-section">
       <img src="../assets/landingImage.png" alt="Landing Photo" class="full-width-image" />
     </div>
+
     <div class="signup-section">
       <div class="top-transition">
         <img src="../assets/topPurple.png" alt="Decorative Transition" class="top-trans" />
@@ -15,15 +16,38 @@
       <div class="names-container">
         <div class="name-field">
           <label for="first-name">First Name</label>
-          <input id="first-name" type="text" class="first-name" placeholder="First Name" v-model="firstName" required />
+          <input
+            id="first-name"
+            type="text"
+            class="first-name"
+            placeholder="First Name"
+            v-model="firstName"
+            required
+          />
         </div>
+
         <div class="name-field">
           <label for="last-name">Last Name</label>
-          <input id="last-name" type="text" class="last-name" placeholder="Last Name" v-model="lastName" required />
+          <input
+            id="last-name"
+            type="text"
+            class="last-name"
+            placeholder="Last Name"
+            v-model="lastName"
+            required
+          />
         </div>
+
         <div class="name-field">
           <label for="email">Email ID</label>
-          <input id="email" type="email" class="email" placeholder="Email" v-model="email" required />
+          <input
+            id="email"
+            type="email"
+            class="email"
+            placeholder="Email"
+            v-model="email"
+            required
+          />
         </div>
       </div>
 
@@ -64,8 +88,16 @@ export default {
         alert('You must agree to the terms and conditions.');
         return;
       }
-      console.log('Sign Up with:', state.firstName, state.lastName, state.email);
-      router.push('/whoareyou');
+
+      // Navigate to next page with data passed as query params
+      router.push({
+        path: '/whoareyou',
+        query: {
+          firstName: state.firstName,
+          lastName: state.lastName,
+          email: state.email
+        }
+      });
     };
 
     return { ...toRefs(state), onSubmit };
