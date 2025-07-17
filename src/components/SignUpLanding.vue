@@ -216,7 +216,7 @@ button {
   position: absolute;
   top: 12px;
   left: 20px;
-  color: #fa58b6;
+  color: #fcf8fb;
   font-size: 14px;
   text-decoration: none;
 }

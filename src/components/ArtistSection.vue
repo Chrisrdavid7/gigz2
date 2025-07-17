@@ -7,8 +7,9 @@
       <div class="tagline-wrapper">
         <img class="welcome-to-gigz" src="../assets/welcome.png" alt="Welcome to Gigz" />
         <p class="tagline-description">
-          A world where barriers vanish, and your music flows freely to audiences craving fresh, groundbreaking performances.
-          With our platform, you're not just an artist; you're a trailblazer, charting new territories in an industry ripe for revolution.
+          Gigz is your launchpad to a world where your music reaches the fans who truly get it. 
+          Powered by AI, we help you find your crowd, and make every performance count. 
+          You're not just touring — you're trailblazing a new era of success.
         </p>
       </div>
     </div>
@@ -126,7 +127,7 @@ export default {
 
 .welcome-to-gigz {
   max-width: 900px;
-  margin-top: 2.5em;
+  margin-top: 5.5em;
   width: 100%;
   height: auto;
 
