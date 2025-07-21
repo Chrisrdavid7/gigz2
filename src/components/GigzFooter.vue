@@ -12,6 +12,9 @@
         <p class="footer-copy">
           &copy; 2025 Gigz Inc
         </p>
+        <p class="footer-disclaimer">
+          The festivals featured on this site are produced by companies we collaborate with. Gigz is not directly affiliated with or endorsed by any specific festival unless otherwise stated.
+        </p>
       </div>
 
       <!-- Right section with socials -->
@@ -83,6 +86,14 @@ export default {
   color: #777;
 }
 
+.footer-disclaimer {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
 .footer-right {
   flex: 1 1 -1000px;
 }
@@ -118,7 +129,8 @@ export default {
     text-align: center;
   }
 
-  .footer-left, .footer-right {
+  .footer-left,
+  .footer-right {
     align-items: center;
   }
 
