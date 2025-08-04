@@ -1,17 +1,25 @@
 <template>
-  <div class="header-container">
+  <!-- ✨ Add “on-press” class whenever the current route starts with /press -->
+  <div :class="['header-container', { 'on-press': isPressPage }]">
     <div class="header-content">
+      <!-- ===== Logo ===== -->
       <div class="logo-container">
         <router-link to="/">
           <img src="../assets/WhiteGigzLogo.png" alt="Gigz Logo" />
         </router-link>
       </div>
+
+      <!-- ===== Actions ===== -->
       <div class="action-container">
+        <!-- Plain Press link -->
+        <router-link to="/press" class="press-link">Press</router-link>
+
+        <!-- Join-Waitlist CTA -->
         <button @click="openSignUpModal" class="sign-up-button">
           <span class="button-text">Join Waitlist</span>
           <span class="button-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24">
-              <path fill="black" d="M13 5l7 7-7 7v-4h-8v-6h8V5z"/>
+              <path fill="black" d="M13 5l7 7-7 7v-4h-8v-6h8V5z" />
             </svg>
           </span>
         </button>
@@ -23,9 +31,15 @@
 <script>
 export default {
   name: 'GigzHeader',
+  computed: {
+    // true when URL begins with /press (covers /press, /press/contact, etc.)
+    isPressPage () {
+      return this.$route.path.startsWith('/press')
+    }
+  },
   methods: {
-    openSignUpModal() {
-      this.$router.push('/signup'); 
+    openSignUpModal () {
+      this.$router.push('/signup')
     }
   }
 }
@@ -39,12 +53,11 @@ export default {
   font-style: normal;
 }
 
+/* ===== Baseline header ===== */
 .header-container {
   font-family: 'Lab Grotesque', sans-serif;
   font-weight: bold;
-  background: transparent;
-  backdrop-filter: none;
-
+  background: transparent;             /* default (home, etc.) */
   display: flex;
   justify-content: center;
   position: absolute;
@@ -52,6 +65,12 @@ export default {
   z-index: 1000;
   width: 100%;
   align-items: center;
+  transition: background 0.3s ease;    /* smooth tint switch */
+}
+
+/* ===== Black tint when on /press ===== */
+.header-container.on-press {
+  background: #000;
 }
 
 .header-content {
@@ -64,7 +83,6 @@ export default {
 }
 
 .logo-container {
-  margin: 0;
   max-width: 60px;
   img {
     max-width: 100%;
@@ -74,9 +92,21 @@ export default {
 
 .action-container {
   display: flex;
-  justify-content: flex-end;
+  gap: 16px;
 }
 
+/* Press link */
+.press-link {
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-family: 'Lab Grotesque', sans-serif;
+}
+
+/* Join Waitlist button */
 .sign-up-button {
   display: flex;
   align-items: center;
@@ -91,9 +121,7 @@ export default {
   gap: 12px;
   font-family: 'Lab Grotesque', sans-serif;
 
-  .button-text {
-    z-index: 2;
-  }
+  .button-text { z-index: 2; }
 
   .button-icon {
     display: flex;
@@ -104,24 +132,16 @@ export default {
     width: 32px;
     height: 32px;
     z-index: 2;
-  }
 
-  svg {
-    width: 14px;
-    height: 14px;
+    svg { width: 14px; height: 14px; }
   }
 }
 
-/* Responsive adjustments */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .header-content {
-    padding: 0 1rem;
-    width: 100%;
-  }
-
-  .logo-container {
-    max-width: 50px;
-  }
+  .header-content     { padding: 0 1rem; width: 100%; }
+  .logo-container     { max-width: 50px; }
+  .press-link         { font-size: 12px; }
 
   .sign-up-button {
     font-size: 12px;
@@ -131,11 +151,7 @@ export default {
       width: 26px;
       height: 26px;
     }
-
-    svg {
-      width: 12px;
-      height: 12px;
-    }
+    svg { width: 12px; height: 12px; }
   }
 }
 </style>

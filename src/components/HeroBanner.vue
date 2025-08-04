@@ -9,8 +9,8 @@
 
       <!-- Headline Over Video -->
       <div class="hero-main-headline">
-        <h1>Perform </h1>
-        <h1 class="accent">At Over 40 Festivals</h1>
+        <h1>Play 40+ Iconic Festivals </h1>
+        <h1 class="accent">One profile. Unlimited stages.</h1>
       </div>
     </div> <!-- ✅ closing .hero-img-wrapper -->
 
@@ -142,7 +142,7 @@ body, html {
 
   h1 {
     font-family: 'Neue Montreal', sans-serif;
-  font-size: 5.5rem;
+  font-size: 2.5rem;
   color: #fff;
    letter-spacing: 0.1em;
     font-weight: 500;
@@ -152,7 +152,7 @@ body, html {
   }
 
   .accent {
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 500;
   }
 

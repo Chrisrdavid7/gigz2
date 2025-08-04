@@ -6,7 +6,11 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') }
     ]
   },
-
+  {
+    path: '/press',
+    component: () => import('layouts/PressLayout.vue'),   // ⬅ layout
+    children: [{ path: '', component: () => import('pages/PressPage.vue') }]
+  },
   // Adding the Artists Page
   {
     path: '/artists',
