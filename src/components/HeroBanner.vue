@@ -31,7 +31,7 @@
 
 <script>
 import FestivalCards from './FestivalCards'
-import asapVideo from '../videos/asapRolling.mp4'
+import asapVideo from '../videos/newVideo.mp4'
 
 const canopyLogo = require('../logos/canopy.png')
 const siloLogo = require('../logos/silo.jpg')

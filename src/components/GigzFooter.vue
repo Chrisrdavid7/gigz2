@@ -17,7 +17,7 @@
         </p>
       </div>
 
-      <!-- Right section with socials -->
+      <!-- Right section with socials & buttons -->
       <div class="footer-right">
         <h4>Follow</h4>
         <div class="footer-socials">
@@ -33,6 +33,12 @@
           <a href="https://www.tiktok.com/@playgigz" aria-label="TikTok" class="social-icon">
             <i class="fab fa-tiktok"></i>
           </a>
+        </div>
+
+        <!-- Footer buttons -->
+        <div class="footer-buttons">
+          <router-link to="/signup" class="footer-btn">Join Waitlist</router-link>
+          <router-link to="/press" class="footer-btn">Press</router-link>
         </div>
       </div>
     </div>
@@ -58,14 +64,14 @@ export default {
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto; /* left expands, right hugs */
   gap: 3rem;
+  align-items: start;
 }
 
 .footer-left {
-  flex: 1 1 300px;
+  text-align: left;
 }
 
 .footer-logo img {
@@ -95,7 +101,10 @@ export default {
 }
 
 .footer-right {
-  flex: 1 1 -1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* align everything to the right */
+  text-align: right;
 }
 
 .footer-right h4 {
@@ -110,6 +119,7 @@ export default {
   display: flex;
   gap: 1.5rem;
   margin-top: 0.5rem;
+  justify-content: flex-end;
 }
 
 .social-icon {
@@ -122,19 +132,48 @@ export default {
   color: #c0961a;
 }
 
+/* Footer buttons */
+.footer-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.footer-btn {
+  background: #c0961a;
+  color: #000;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.footer-btn:hover {
+  background: #d4a92d;
+}
+
 @media (max-width: 768px) {
   .footer-content {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr; /* stack */
+    gap: 2rem;
     text-align: center;
   }
 
   .footer-left,
   .footer-right {
     align-items: center;
+    text-align: center;
   }
 
   .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-buttons {
     justify-content: center;
   }
 }
