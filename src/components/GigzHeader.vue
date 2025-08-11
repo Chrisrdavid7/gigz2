@@ -54,10 +54,11 @@ export default {
 }
 
 /* ===== Baseline header ===== */
+/* ===== Baseline header ===== */
 .header-container {
   font-family: 'Lab Grotesque', sans-serif;
   font-weight: bold;
-  background: transparent;             /* default (home, etc.) */
+  background: transparent;
   display: flex;
   justify-content: center;
   position: absolute;
@@ -65,10 +66,9 @@ export default {
   z-index: 1000;
   width: 100%;
   align-items: center;
-  transition: background 0.3s ease;    /* smooth tint switch */
+  transition: background 0.3s ease;
 }
 
-/* ===== Black tint when on /press ===== */
 .header-container.on-press {
   background: #000;
 }
@@ -79,19 +79,18 @@ export default {
   align-items: center;
   height: 100%;
   max-width: 1276px;
-  width: 80%;
+  width: 100%;
+  padding: 0 2rem;
 }
 
-.logo-container {
+.logo-container img {
   max-width: 60px;
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+  height: auto;
 }
 
 .action-container {
   display: flex;
+  align-items: center;
   gap: 16px;
 }
 
@@ -102,16 +101,15 @@ export default {
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
-  margin-top: 1rem;
   font-family: 'Lab Grotesque', sans-serif;
 }
 
-/* Join Waitlist button */
+/* Futuristic Join Waitlist button */
 .sign-up-button {
   display: flex;
   align-items: center;
-  background-color: #000;
-  color: #fff;
+  background: linear-gradient(135deg, #ffd34e, #c0961a);
+  color: #000;
   font-weight: bold;
   font-size: 14px;
   padding: 10px 16px 10px 20px;
@@ -120,6 +118,10 @@ export default {
   cursor: pointer;
   gap: 12px;
   font-family: 'Lab Grotesque', sans-serif;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  animation: pulseGlow 2.5s infinite;
 
   .button-text { z-index: 2; }
 
@@ -132,21 +134,48 @@ export default {
     width: 32px;
     height: 32px;
     z-index: 2;
-
     svg { width: 14px; height: 14px; }
   }
+
+  /* Gold shimmer effect */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.9); }
 }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .header-content     { padding: 0 1rem; width: 100%; }
-  .logo-container     { max-width: 50px; }
-  .press-link         { font-size: 12px; }
-
+  .header-content {
+    padding: 0 1rem;
+    justify-content: space-between;
+  }
+  .logo-container img { max-width: 50px; }
+  .press-link { font-size: 12px; margin-right: 4px; }
   .sign-up-button {
     font-size: 12px;
     padding: 8px 14px 8px 16px;
-
     .button-icon {
       width: 26px;
       height: 26px;
@@ -154,4 +183,5 @@ export default {
     svg { width: 12px; height: 12px; }
   }
 }
+
 </style>
