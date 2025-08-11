@@ -1,33 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= productName %></title>
+    <title>Gigz</title>
 
-    <meta charset="utf-8">
-    <meta name="description" content="<%= productDescription %>">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>">
+    <meta charset="utf-8" />
+    <meta name="description" content="Play 40+ Iconic Festivals — One profile. Unlimited stages." />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>"
+    />
 
-    <link rel="icon" type="image/png" sizes="128x128" href="icons/favicon-128x128.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="icon" type="image/ico" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="128x128" href="icons/favicon-128x128.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
 
-    <!-- ✅ Google Analytics tag -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Gigz" />
+    <meta
+      property="og:description"
+      content="Play 40+ Iconic Festivals — One profile. Unlimited stages."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://playgigz.com" />
+    <meta property="og:image" content="https://playgigz.com/images/preview.png?v=2" />
+    <meta property="og:image:secure_url" content="https://playgigz.com/images/preview.png?v=2" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gigz" />
+    <meta
+      name="twitter:description"
+      content="Play 40+ Iconic Festivals — One profile. Unlimited stages."
+    />
+    <meta name="twitter:image" content="https://playgigz.com/images/preview.png?v=2" />
+    <meta name="twitter:site" content="@playgigz" />
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJR725DMXK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('config', 'G-MJR725DMXK');
     </script>
-
   </head>
+
   <body>
     <!-- DO NOT touch the following DIV -->
     <div id="q-app"></div>
