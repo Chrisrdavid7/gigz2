@@ -3,6 +3,7 @@
 node_modules
 
 # Quasar core related directories
+.env
 .quasar
 /dist
 /quasar.config.*.temporary.compiled*
@@ -31,3 +32,4 @@ yarn-error.log*
 
 # local .env files
 .env.local*
+.vercel

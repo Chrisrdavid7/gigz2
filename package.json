@@ -5,6 +5,8 @@
   "productName": "Gigz",
   "author": "Chris David <chrisrdavid7@gmail.com>",
   "private": true,
+  "packageManager": "npm@10.8.1",
+  
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
