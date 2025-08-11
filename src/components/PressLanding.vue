@@ -136,6 +136,15 @@ const articles = ref([
   },
   {
     id: 4,
+    title: 'Def Leppard and Mötley Crüe Teaming Up For First Rock the Tides Destination Festival in Mexico',
+    source: 'Billboard',
+    date: '2025-04-18',
+    excerpt: 'The November event will also feature sets from Bret Michaels, Living Colour, Extreme and others.',
+    link: 'https://www.billboard.com/music/rock/def-leppard-motley-crue-2025-rock-the-tides-festival-mexico-1235949841/',
+    image: '/images/press/Rolling-Stone-Logo.jpg'
+  },
+  {
+    id: 5,
     title: 'Def Leppard, Motley Crue Team for Rock the Tides Festival in Mexico',
     source: 'Rolling Stone',
     date: '2025-04-17',
@@ -144,16 +153,34 @@ const articles = ref([
     image: '/images/press/Rolling-Stone-Logo.jpg'
   },
   {
-    id: 5,
+    id: 6,
+    title: 'Def Leppard Team Up With Fellow 80s Rock Legends For Destination Festival',
+    source: 'iHeart',
+    date: '2025-04-17',
+    excerpt: 'Def Leppard and Motley Crue are teaming up to host an all-inclusive destination festival this fall called Rock The Tides. The weekend-long event is set to go down November 7-9 on Mexicos Riviera Maya.',
+    link: 'https://www.iheart.com/content/2025-04-17-def-leppard-team-up-with-fellow-80s-rock-legends-for-destination-festival/',
+    image: '/images/press/Rolling-Stone-Logo.jpg'
+  },
+  {
+    id: 7,
     title: 'Inside TOOL Live in the Sand: Promoters give preview of TOOL’s first-ever festival',
-    source: 'Revolver Mag',
+    source: 'Revolver Magazine',
     date: '2025-02-19',
     excerpt: 'A behind-the-scenes look at the luxury alt-metal event in the Dominican Republic',
-    link: 'https://edm.com/events/deadmau5-destination-music-festival-cancun',
+    link: 'https://www.revolvermag.com/feature/inside-tool-live-in-the-sand-promoters-give-preview-of-tools-first-ever-festival/',
     image: '/images/press/revolver.png'
   },
   {
-    id: 6,
+    id: 8,
+    title: 'Destination Events Get Heavy With ‘Tool Live In The Sand’',
+    source: 'PollStar',
+    date: '2025-02-19',
+    excerpt: '“We were really excited that they wanted to work with us on curating their destination event,” said Tyler Fey, partner and co-founder of destination event producer Festication.',
+    link: 'https://news.pollstar.com/2024/11/15/destination-events-get-heavy-with-tool-live-in-the-sand/',
+    image: '/images/press/revolver.png'
+  },
+  {
+    id: 9,
     title: 'Headbangers Paradise Excision Announces New Oceanfront Music Festival in Cancún',
     source: 'EDM.com',
     date: '2021-08-03',
@@ -162,7 +189,7 @@ const articles = ref([
     image: '/images/press/edm.png'
   },
   {
-    id: 7,
+    id: 10,
     title: 'deadmau5 Announces Destination Music Festival In Cancún',
     source: 'EDM.com',
     date: '2022-08-27',
