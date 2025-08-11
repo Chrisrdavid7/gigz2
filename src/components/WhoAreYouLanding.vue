@@ -1,39 +1,65 @@
 <template>
-  <div class="landing-container">
-    <div class="content-wrapper">
+  <div class="who-wrapper">
+    <!-- Background FX over your image -->
+    <div class="fx fx-grid" aria-hidden="true"></div>
+    <div class="fx fx-aurora a1" aria-hidden="true"></div>
+    <div class="fx fx-aurora a2" aria-hidden="true"></div>
+    <div class="fx fx-vignette" aria-hidden="true"></div>
+
+    <div class="content">
       <h2 class="heading">Who Are You?</h2>
-      <div class="role-container">
-        <div
-          class="role"
+
+      <div class="roles-grid" role="group" aria-label="Choose your role">
+        <!-- Artist -->
+        <button
+          class="role-card"
           :class="{ selected: selectedRole === 'artist' }"
           @click="selectRole('artist')"
+          @keydown.enter.prevent="selectRole('artist')"
+          @keydown.space.prevent="selectRole('artist')"
+          :aria-pressed="selectedRole === 'artist'"
         >
-          <img src="../assets/artist.png" alt="Artist" />
-          <p>Artist</p>
-        </div>
-        <div
-          class="role"
+          <span class="ring" aria-hidden="true"></span>
+          <img src="../assets/artist.png" alt="" />
+          <span class="label">Artist</span>
+        </button>
+
+        <!-- Manager -->
+        <button
+          class="role-card"
           :class="{ selected: selectedRole === 'manager' }"
           @click="selectRole('manager')"
+          @keydown.enter.prevent="selectRole('manager')"
+          @keydown.space.prevent="selectRole('manager')"
+          :aria-pressed="selectedRole === 'manager'"
         >
-          <img src="../assets/manager.png" alt="Manager" />
-          <p>Manager</p>
-        </div>
-        <div
-          class="role"
+          <span class="ring" aria-hidden="true"></span>
+          <img src="../assets/manager.png" alt="" />
+          <span class="label">Manager</span>
+        </button>
+
+        <!-- Supporter -->
+        <button
+          class="role-card"
           :class="{ selected: selectedRole === 'supporter' }"
           @click="selectRole('supporter')"
+          @keydown.enter.prevent="selectRole('supporter')"
+          @keydown.space.prevent="selectRole('supporter')"
+          :aria-pressed="selectedRole === 'supporter'"
         >
-          <img src="../assets/supporter.png" alt="Supporter" />
-          <p>Supporter</p>
-        </div>
+          <span class="ring" aria-hidden="true"></span>
+          <img src="../assets/supporter.png" alt="" />
+          <span class="label">Fan</span>
+        </button>
       </div>
+
       <button
-        :class="{ active: isActive }"
+        class="cta"
+        :class="{ active: !!selectedRole }"
         :disabled="!selectedRole"
         @click="completeProfile"
       >
-        Complete Profile
+        <span>Complete Profile</span>
       </button>
     </div>
   </div>
@@ -45,10 +71,7 @@ import { useRoute, useRouter } from 'vue-router'
 export default {
   name: 'WhoAreYouLanding',
   data() {
-    return {
-      selectedRole: null,
-      isActive: false
-    }
+    return { selectedRole: null, isActive: false }
   },
   setup() {
     const route = useRoute()
@@ -58,58 +81,39 @@ export default {
   methods: {
     selectRole(role) {
       this.selectedRole = role
-      console.log(`Role selected: ${role}`)
     },
-
     async completeProfile() {
-  if (!this.selectedRole) {
-    alert('Please select a role before continuing.')
-    return
-  }
-
-  const firstName = this.route.query.firstName || ''
-  const lastName = this.route.query.lastName || ''
-  const email = this.route.query.email || ''
-
-  if (!email || !firstName || !lastName) {
-    alert('Missing info in query params.')
-    return
-  }
-
-  const payload = {
-    email: email,
-    fields: {
-      first_name2: firstName,
-      last_name2: lastName,
-      role: this.selectedRole
+      if (!this.selectedRole) return
+      const firstName = this.route.query.firstName || ''
+      const lastName = this.route.query.lastName || ''
+      const email = this.route.query.email || ''
+      if (!email || !firstName || !lastName) {
+        alert('Missing info in query params.')
+        return
+      }
+      const payload = {
+        email,
+        fields: { first_name2: firstName, last_name2: lastName, role: this.selectedRole }
+      }
+      try {
+        const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // ⚠️ Move this token to an environment variable / server proxy in production.
+            'Authorization': 'Bearer YOUR_API_KEY'
+          },
+          body: JSON.stringify(payload)
+        })
+        const result = await response.json()
+        if (!response.ok) throw new Error(result.message || 'Failed to subscribe')
+        this.isActive = true
+        setTimeout(() => this.router.push('/'), 1200)
+      } catch (e) {
+        console.error(e)
+        alert('Something went wrong. Please try again later.')
+      }
     }
-  }
-
-  try {
-    const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZTQ5ZjIzMzA3MjFhOTE0N2MyNWQ3MTYyZjFhODhhZWJiODU3NTYwZTQxNjM5MzM0YzQwOTlhZmU1ZGJkMmU3M2FlOGIzZmNmMTQzZWY4MDEiLCJpYXQiOjE3NTI3MzUwMTguMzg5NjE3LCJuYmYiOjE3NTI3MzUwMTguMzg5NjIsImV4cCI6NDkwODQwODYxOC4zODQ3NjIsInN1YiI6IjE2ODUwMzQiLCJzY29wZXMiOltdfQ.ISdFP6gdqCP4ClVYIQMNSJXnCgHm7i0ddQgp7fXv8EbV_BUo2Xsh_h-C2kvsGajc1tGV9SFS7MHybTOD4KzHh86HzTAswRlmcVVadNZTOQ1rq-rW1GNxoj7vrMAWDdr4seC5WySJQrRR5S6M7Lg8c_D_-zhSJASHqJhxIl1YScew6cK0LesUIlPOHK1-doYwbx0QaD_nIBxjut5279dcCYKbnG0Dy5MhOGsp0z0OpNElfyZbR-eNc8RFiN0gOHCJEa2HwtbiyzT3L9rAjOQVykm3rovCb6Q47pWEpXH4RTVQIeAFHZuGOietMp0A4DT2Pg81tVD5JEzFFMRbzOTYcBmEufH7CDM09wAS8fKV8YmRVWThOQuT9cnZsyur6lCLIpPW1YkmyPwIJfPZFwrLoJ3v-EQfOY8EqwTLeoL2enpZdKpgQG0aZ4ZgkY4knUDqGBtQbr2PmmEKAXpsx91jr8MEF-etvXoxxHG2H57ISRASeajlMSR3ob80sQ-Vd7WSormk-bYeZTgEjDwGm7yUXpsnZEkXyBUEfYECOUu5eQNtDNetZ--GSjPFZER2VpiRev3KRH7XaBbvSaOy9UN_StsCuDv2z9kC_cLAwHxnVoZFqgzHDQKi8gHgQ8KY4_mAt6KSSYZcy4ifdGmrIzn9dZRjLb9T5pYeuZfF6KYtfSY' // use your real API key
-      },
-      body: JSON.stringify(payload)
-    })
-
-    const result = await response.json()
-    if (!response.ok) {
-      console.error(result)
-      throw new Error(result.message || 'Failed to subscribe')
-    }
-
-    console.log('Subscribed:', result)
-    this.isActive = true
-    setTimeout(() => this.router.push('/'), 1500)
-  } catch (err) {
-    console.error('Error subscribing:', err)
-    alert('Something went wrong. Please try again later.')
-  }
-}
-
   }
 }
 </script>
@@ -118,145 +122,150 @@ export default {
 @font-face {
   font-family: 'Lab Grotesque';
   src: url('/media/fonts/LabGrotesque/LabGrotesqueBold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+  font-weight: 800; font-style: normal;
 }
 
-.landing-container {
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-image: url('../assets/background.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding: 0 20px;
-  box-sizing: border-box;
+/* ===== Theme tokens ===== */
+.who-wrapper{
+  --neon:#c8ff7a;
+  --neon-soft:rgba(200,255,122,.18);
+  --violet:#8f7aff;
+  --bg0:#000;          /* keep your image visible, but page is true black */
+  --bg1:#07090c;
+  --grid:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.14);
+  --glass1:rgba(255,255,255,.06);
+  --glass2:rgba(255,255,255,.02);
+  --text:#fff;
+  --muted:#a9b0be;
 }
 
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/* ===== Background w/ your image ===== */
+.who-wrapper{
+  min-height:100vh;
+  width:100%;
+  position:relative;
+  display:grid;
+  place-items:center;
+  color:var(--text);
+  background:
+    linear-gradient(180deg, var(--bg0), var(--bg1)),
+    url('../assets/background.png') center/cover no-repeat fixed;
+  overflow:hidden;
+  padding: clamp(16px, 4vw, 40px);
 }
 
-.heading {
-  font-family: 'Lab Grotesque', sans-serif;
-  font-size: 40px;
-  font-weight: 600;
-  letter-spacing: 4%;
-  color: #fff;
-  margin-top: 8vh;
-  margin-bottom: 3vh;
-  text-align: center;
+/* FX layers */
+.fx{ position:absolute; inset:0; pointer-events:none; }
+.fx-grid{
+  opacity:.14;
+  background:
+    repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg,  var(--grid) 0 1px, transparent 1px 28px);
+  animation:gridShift 28s linear infinite;
+}
+@keyframes gridShift{ to{ transform:translateY(-60px); } }
+
+.fx-aurora{ filter:blur(28px); mix-blend-mode:screen; }
+.fx-aurora.a1{ background: radial-gradient(520px 320px at 80% 10%, rgba(200,255,122,.22), transparent 60%); }
+.fx-aurora.a2{ background: radial-gradient(560px 360px at 20% 90%, rgba(143,122,255,.20), transparent 60%); }
+
+.fx-vignette{
+  background: radial-gradient(1200px 700px at 50% 40%, transparent 60%, rgba(0,0,0,.55));
 }
 
-.role-container {
-  margin-top: 8vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30vh;
-  margin-bottom: auto;
+/* ===== Content ===== */
+.content{
+  position:relative; z-index:1;
+  width:min(1100px, 100%);
+  display:grid; gap: clamp(18px, 4vh, 28px);
+  justify-items:center;
+  text-align:center;
 }
 
-.role {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
+.heading{
+  font-family:'Lab Grotesque', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight:800;
+  letter-spacing:-.01em;
+  font-size: clamp(28px, 4.8vw, 52px);
+  margin:0;
+  text-shadow: 0 6px 28px rgba(0,0,0,.6);
 }
 
-.role.selected {
-  transform: scale(1.1);
-  border: 0.5px solid #35BCBC;
-  border-radius: 50%;
-  padding: 5px;
+/* ===== Roles ===== */
+.roles-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: clamp(16px, 4vw, 36px);
+  width:100%;
+  margin-top: clamp(8px, 2vh, 12px);
 }
 
-.role img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
+.role-card{
+  position:relative;
+  display:grid;
+  place-items:center;
+  gap:12px;
+  padding:18px 16px 20px;
+  border-radius:20px;
+  background: linear-gradient(180deg, var(--glass1), var(--glass2));
+  border:1px solid var(--stroke);
+  backdrop-filter: blur(8px);
+  cursor:pointer;
+  transition: transform .16s ease, box-shadow .25s ease, border-color .2s ease;
+  outline:none;
+  color:var(--text);
 }
-
-.role p {
-  font-size: 24px;
-  margin-top: 10px;
-  color: #fff;
-  text-align: center;
+.role-card .ring{
+  position:absolute; inset:-2px;
+  border-radius:inherit;
+  background: radial-gradient(260px 160px at 50% -20%, var(--neon-soft), transparent 60%);
+  opacity:.0; transition: opacity .2s ease;
 }
-
-.role:hover {
-  transform: scale(1.1);
-  transition: all 0.3s ease-in-out;
+.role-card img{
+  width:160px; height:160px; object-fit:cover; border-radius:50%;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
 }
-
-button {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  padding: 12px 20px;
-  font-size: 16px;
-  width: 200px;
-  background-color: #000;
-  border: 1px solid #c0961a;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+.role-card .label{
+  font-size:18px; font-weight:700; letter-spacing:.02em;
 }
-
-button:hover,
-button.active {
-  background-color: #c0961a;
-  color: #000;
+.role-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(0,0,0,.45), 0 0 0 1px rgba(200,255,122,.25) inset;
+  border-color: rgba(200,255,122,.5);
 }
+.role-card:hover .ring{ opacity:.5; }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background-color: #1a1a1a;
-  border-color: #555;
-  color: #999;
+/* Selected state */
+.role-card.selected{
+  border-color: rgba(200,255,122,.8);
+  box-shadow: 0 0 0 2px rgba(200,255,122,.45), 0 24px 60px rgba(200,255,122,.18);
 }
+.role-card.selected .ring{ opacity:.8; }
 
-@media (max-width: 768px) {
-  .heading {
-    font-size: 24px;
-    margin-top: 4vh;
-    margin-bottom: 2vh;
-  }
+/* ===== CTA ===== */
+.cta{
+  margin-top: clamp(6px, 1.6vh, 10px);
+  padding: 14px 22px;
+  border-radius:14px;
+  border:1px solid rgba(200,255,122,.5);
+  background: linear-gradient(180deg, rgba(200,255,122,.18), rgba(200,255,122,.08));
+  color:#a6b0bb;
+  font-weight:800; letter-spacing:.02em;
+  width:min(320px, 90%); cursor:not-allowed;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+.cta.active{
+  cursor:pointer; color:#0b0e13;
+  background: linear-gradient(180deg, var(--neon), #a8ff4d);
+  box-shadow: 0 18px 40px rgba(200,255,122,.22), 0 6px 14px rgba(0,0,0,.55);
+}
+.cta.active:hover{ transform: translateY(-1px); box-shadow: 0 24px 48px rgba(200,255,122,.28), 0 8px 18px rgba(0,0,0,.65); }
+.cta:disabled{ opacity:.8; }
 
-  .role-container {
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 4vh;
-  }
-
-  .role img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .role p {
-    font-size: 18px;
-  }
-
-  button {
-    width: 90%;
-    max-width: 300px;
-    margin-top: 30px;
-    margin-bottom: 40px;
-    font-size: 16px;
-  }
-
-  .content-wrapper {
-    padding-top: 4vh;
-    padding-bottom: 4vh;
-  }
+/* ===== Responsive ===== */
+@media (max-width: 980px){
+  .roles-grid{ grid-template-columns: 1fr; max-width: 440px; }
+  .role-card img{ width:140px; height:140px; }
 }
 </style>
