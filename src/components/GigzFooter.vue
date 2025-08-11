@@ -48,33 +48,25 @@
 <script>
 export default { name: 'FooterComponent' }
 </script>
-
 <style scoped>
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 /* ===== Theme tokens & container ===== */
 .ai-footer{
-  /* slightly darker base for better blend */
-  --bg0:#030305;
-  --bg1:#0a0c11;
-
-  /* neon + accents */
+  --bg0:#000;           /* deeper black to match header */
+  --bg1:#050607;
   --neon:#c8ff7a;                   /* cyber-lime */
   --neon-soft:rgba(200,255,122,.18);
   --accent:#d4af37;                 /* gold */
-
-  /* glass & strokes */
   --glass:rgba(255,255,255,.05);
   --stroke:rgba(255,255,255,.12);
   --muted:#a9b0be;
-
-  --top-blend:64px;                 /* height of the top dark fade */
+  --top-blend:96px;                 /* taller fade for dark match */
 
   position: relative;
   isolation: isolate;
   color:#fff;
 
-  /* top darkening layer first, then glows, then base gradient */
   background:
     linear-gradient(180deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,0) var(--top-blend)),
     radial-gradient(1200px 500px at 10% -20%, rgba(137,115,255,.12), transparent),
@@ -85,11 +77,10 @@ export default { name: 'FooterComponent' }
   overflow: clip;
 }
 
-/* ===== Background FX (single source) ===== */
+/* ===== Background FX ===== */
 .fx{ position:absolute; inset:0; pointer-events:none; }
-
 .fx-grid{
-  opacity:.16;
+  opacity:.10;
   background:
     repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 28px),
     repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 28px);
@@ -98,12 +89,12 @@ export default { name: 'FooterComponent' }
 @keyframes gridShift { to { transform: translateY(-60px); } }
 
 .fx-glow{ mix-blend-mode:screen; filter: blur(28px); }
-.fx-glow-1{ background: radial-gradient(400px 220px at 20% 30%, var(--neon-soft), transparent); }
-.fx-glow-2{ background: radial-gradient(460px 240px at 80% 80%, rgba(137,115,255,.12), transparent); }
+.fx-glow-1{ background: radial-gradient(400px 220px at 20% 30%, rgba(200,255,122,.10), transparent); }
+.fx-glow-2{ background: radial-gradient(460px 240px at 80% 80%, rgba(137,115,255,.08), transparent); }
 
 .fx-divider{
   height:1px; inset:auto 0 0 0;
-  background: linear-gradient(90deg, transparent, rgba(200,255,122,.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.35), transparent);
   box-shadow: 0 -1px 0 rgba(255,255,255,.06) inset;
 }
 
@@ -119,20 +110,21 @@ export default { name: 'FooterComponent' }
 }
 
 .glass{
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border:1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+  border:1px solid rgba(255,255,255,.08);
   border-radius:16px;
   padding:22px;
   backdrop-filter: blur(6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.55);
 }
 
-/* Left block */
+/* ===== Left block ===== */
 .footer-logo img{ width:120px; height:auto; display:block; margin-bottom:14px; }
 .footer-tagline{ color:#e9edf5; max-width:360px; line-height:1.6; margin:8px 0 12px; }
 .footer-copy{ color:#a3a7b3; font-size:.82rem; margin:0 0 6px; }
 .footer-disclaimer{ color:#8b90a0; font-size:.75rem; line-height:1.45; max-width:420px; margin:8px 0 0; }
 
-/* Right block */
+/* ===== Right block ===== */
 .footer-right{ display:flex; flex-direction:column; align-items:flex-end; text-align:right; gap:16px; }
 .follow-title{ font-size:.8rem; letter-spacing:.28em; color:var(--muted); margin:0 0 6px; }
 .footer-socials{ display:flex; gap:12px; }
@@ -142,12 +134,12 @@ export default { name: 'FooterComponent' }
   --ring: rgba(200,255,122,.35);
   width:42px; height:42px; border-radius:999px;
   display:grid; place-items:center;
-  border:1px solid var(--stroke);
-  background: radial-gradient(220px 220px at 30% 20%, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
   position:relative; overflow:hidden;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.social-icon i{ font-size:16px; }
+.social-icon i{ font-size:16px; color:#fff !important; }
 .social-icon::after{
   content:""; position:absolute; inset:-120% -120% auto -120%;
   height:200%; background:linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
@@ -161,9 +153,10 @@ export default { name: 'FooterComponent' }
 .social-icon:hover::after{ animation: shine 800ms linear forwards; opacity:1; }
 @keyframes shine { to { transform: translateX(220%) rotate(25deg); opacity:0; } }
 
-/* Buttons */
+/* ===== Buttons ===== */
 .footer-buttons{ display:flex; gap:12px; justify-content:flex-end; }
 
+/* Base holo-btn */
 .holo-btn{
   position:relative; display:inline-flex; align-items:center; justify-content:center;
   padding:10px 16px; border-radius:12px; text-decoration:none; text-transform:uppercase;
@@ -184,20 +177,29 @@ export default { name: 'FooterComponent' }
 }
 .holo-btn:hover::before{ opacity:.5; }
 
-/* Neon primary (Join Waitlist) */
+/* Neon primary changed to gold gradient */
 .footer-buttons .holo-primary{
-  background: linear-gradient(180deg, var(--neon), #a8ff4d) !important;
-  color: #0b0e13 !important;
-  border-color: rgba(200,255,122,.65) !important;
-  box-shadow: 0 8px 22px rgba(200,255,122,.18);
+  background: linear-gradient(135deg, #ffd34e, #c0961a) !important;
+  color:#000 !important;
+  border-color: rgba(255,211,78,.6) !important;
+  box-shadow: 0 0 0 1px rgba(255,211,78,.3) inset,
+              0 10px 28px rgba(255,211,78,.18);
 }
 .footer-buttons .holo-primary:hover{
-  box-shadow: 0 14px 30px rgba(200,255,122,.28), 0 6px 14px rgba(0,0,0,.5);
+  box-shadow: 0 0 0 1px rgba(255,211,78,.45) inset,
+              0 16px 36px rgba(255,211,78,.28), 0 6px 18px rgba(0,0,0,.55);
   transform: translateY(-2px);
 }
 .footer-buttons .holo-primary:focus-visible{
   outline: none;
-  box-shadow: 0 0 0 3px rgba(200,255,122,.45);
+  box-shadow: 0 0 0 3px rgba(255,211,78,.45);
+}
+
+/* Dim secondary */
+.footer-buttons .holo-btn:not(.holo-primary){
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-color: rgba(255,255,255,.14);
+  color:#e6e9f0;
 }
 
 /* ===== Responsive ===== */
@@ -213,35 +215,4 @@ export default { name: 'FooterComponent' }
   .fx-grid, .social-icon:hover::after { animation: none !important; }
   .social-icon, .holo-btn { transition: none !important; }
 }
-/* --- Social icons: make them clearly white --- */
-.footer-right .social-icon,
-.footer-right .social-icon:link,
-.footer-right .social-icon:visited,
-.footer-right .social-icon:hover,
-.footer-right .social-icon:active {
-  color: #fff !important;          /* override any link colors */
-  text-decoration: none;
-}
-
-.footer-right .social-icon i {
-  color: #fff !important;           /* force the glyph white */
-  opacity: 1 !important;
-  mix-blend-mode: normal !important;
-  filter: none !important;
-  text-shadow: 0 0 8px rgba(255,255,255,.12); /* subtle lift */
-}
-
-/* Improve contrast of the circular chip */
-.footer-right .social-icon {
-  background: rgba(255,255,255,.10);         /* was ~.06 — a touch brighter */
-  border-color: rgba(255,255,255,.28);
-}
-
-/* Keep the hover glow but stay white */
-.footer-right .social-icon:hover {
-  border-color: rgba(255,255,255,.6);
-  box-shadow: 0 0 18px rgba(255,255,255,.18), inset 0 0 12px rgba(255,255,255,.06);
-}
-.footer-right .social-icon:hover i { color:#fff !important; }
-
 </style>
