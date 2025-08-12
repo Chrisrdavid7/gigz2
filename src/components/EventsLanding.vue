@@ -156,7 +156,7 @@
       city: 'Cancun, Mexico',
       attendance: 8200,
     
-      image: '/images/paradiseBlue2022.png',
+      image: '/images/paradiseblue2022.png',
       link: 'https://paradisebluefestival.com/'
     },
     {
