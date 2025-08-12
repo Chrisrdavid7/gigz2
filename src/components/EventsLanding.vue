@@ -100,7 +100,7 @@
       title: 'Tool In The Sand',
       year: 2025,
       city: 'Punta Cana, Dominican Republic',
-      attendance: 7715,
+      attendance: 'Tool, Primus, Mastodon',
       
       image: '/images/Tool2025.jpg',
       link: 'https://toolinthesand.com/'
@@ -109,7 +109,7 @@
       title: 'Paradise Blue',
       year: 2024,
       city: 'Cancun, Mexico',
-      attendance: 7200,
+      attendance: 'Excision, Wooli, Svdden Death',
     
       image: '/images/blue2024.png',
       link: 'https://paradisebluefestival.com/'
@@ -118,7 +118,7 @@
       title: 'Ember Shores',
       year: 2023,
       city: 'Cancun, Mexico',
-      attendance: 8900,
+      attendance: 'Illenium, Slander, Sullivan King',
     
       image: '/images/embers2023.png',
       link: 'https://embershores.com/'
@@ -127,7 +127,7 @@
       title: 'Paradise Blue',
       year: 2023,
       city: 'Cancun, Mexico',
-      attendance: 5520,
+      attendance: 'Excision, Wooli, Svdden Death',
     
       image: '/images/paradise2023.jpg',
       link: 'https://paradisebluefestival.com/'
@@ -136,7 +136,7 @@
       title: 'Sun SoaKed & Friend5!',
       year: 2022,
       city: 'Cancun, Mexico',
-      attendance: 4430,
+      attendance: 'Kaskade, Deadmau5, William Black',
     
       image: '/images/sunsoak.png',
       link: 'https://sunsoaked.insomniac.com/'
@@ -145,7 +145,7 @@
       title: 'Ember Shores',
       year: 2022,
       city: 'Cancun, Mexico',
-      attendance: 6200,
+      attendance: 'Illenium, Dillion Francis, William Black',
     
       image: '/images/ember2022.jpg',
       link: 'https://embershores.com/'
@@ -154,7 +154,7 @@
       title: 'Paradise Blue',
       year: 2022,
       city: 'Cancun, Mexico',
-      attendance: 8200,
+      attendance: 'Excision, Wooli, Svdden Death',
     
       image: '/images/paradiseblue2022.png',
       link: 'https://paradisebluefestival.com/'
@@ -163,7 +163,7 @@
       title: 'Ember Shores',
       year: 2021,
       city: 'Cancun, Mexico',
-      attendance: 5200,
+      attendance: 'Illenium, Helen, William Black',
     
       image: '/images/embersShores2021.jpg',
       link: 'https://paradisebluefestival.com/'
