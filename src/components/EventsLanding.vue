@@ -129,7 +129,7 @@
       city: 'Cancun, Mexico',
       attendance: 5520,
     
-      image: '/images/blue2024.png',
+      image: '/images/paradise2023.jpg',
       link: 'https://paradisebluefestival.com/'
     },
     {
@@ -147,7 +147,7 @@
       city: 'Cancun, Mexico',
       attendance: 6200,
     
-      image: '/images/embershores2022.jpg',
+      image: '/images/ember2022.jpg',
       link: 'https://embershores.com/'
     },
     {
