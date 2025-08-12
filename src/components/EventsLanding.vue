@@ -102,7 +102,7 @@
       city: 'Punta Cana, Dominican Republic',
       attendance: 7715,
       
-      image: '/images/tool2025.jpg',
+      image: '/images/Tool2025.jpg',
       link: 'https://toolinthesand.com/'
     },
     {
@@ -165,7 +165,7 @@
       city: 'Cancun, Mexico',
       attendance: 5200,
     
-      image: '/images/ember2021.jpg',
+      image: '/images/embersShores2021.jpg',
       link: 'https://paradisebluefestival.com/'
     },
   ])
