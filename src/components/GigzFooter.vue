@@ -38,6 +38,7 @@
 
         <div class="footer-buttons">
           <router-link to="/signup" class="holo-btn holo-primary">Join Waitlist</router-link>
+          <router-link to="/events" class="holo-btn">Events</router-link>
           <router-link to="/press" class="holo-btn">Press</router-link>
         </div>
       </div>

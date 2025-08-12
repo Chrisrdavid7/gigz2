@@ -12,6 +12,7 @@
       <!-- ===== Actions ===== -->
       <div class="action-container">
         <!-- Plain Press link -->
+        <router-link to="/events" class="press-link">Events</router-link>
         <router-link to="/press" class="press-link">Press</router-link>
 
         <!-- Join-Waitlist CTA -->

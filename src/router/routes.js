@@ -35,6 +35,13 @@ const routes = [
     ]
   },
   {
+    path: '/events',
+    component: () => import('layouts/EventsLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/EventsPage.vue') }
+    ]
+  },
+  {
     path: '/login',
     component: () => import('layouts/LoginLayout.vue'),
     children: [
