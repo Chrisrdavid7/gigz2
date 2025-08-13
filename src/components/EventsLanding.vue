@@ -66,7 +66,7 @@
               <div class="sub">
                 <span>{{ ev.city }}</span>
                 <span class="dot">•</span>
-                <span>{{ ev.attendance.toLocaleString() }} attendees</span>
+                <span>{{ ev.attendance.toLocaleString() }} </span>
               </div>
               <div class="tags">
                 <span v-for="(t, j) in ev.tags" :key="j" class="tag">{{ t }}</span>
