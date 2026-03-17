@@ -9,6 +9,7 @@
         <a href="https://embershores.com" target="_blank" rel="noopener">Ember Shores</a>
         <a href="https://app.playgigz.com/login" target="_blank">Sign In</a>
         <a href="mailto:tyler@playgigz.com">Contact</a>
+        <a href="https://www.instagram.com/playgigz" target="_blank" rel="noopener">Instagram</a>
       </div>
       <div class="foot-copy">© 2026 Gigz Technologies Inc. · All Rights Reserved</div>
     </div>
