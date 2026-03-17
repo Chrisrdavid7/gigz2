@@ -2,10 +2,10 @@
   <nav class="nav">
     <img :src="logo" alt="Gigz" class="logo-img" />
     <div class="nav-links">
-      <a href="#proof" class="nav-text">The Proof</a>
+      <a href="#features" class="nav-text">Features</a>
       <a href="#festivals" class="nav-text">Festivals</a>
-      <a href="#apply" class="nav-text">Apply</a>
-      <a href="#apply" class="btn-nav">Get My Forecast →</a>
+      <a href="https://app.playgigz.com/login" class="nav-text">Sign In</a>
+      <a href="https://app.playgigz.com/register" target="_blank" rel="noopener" class="btn-nav">Get Started →</a>
     </div>
   </nav>
 </template>

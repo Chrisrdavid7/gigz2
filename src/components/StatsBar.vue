@@ -8,14 +8,16 @@
     </div>
   </div>
 </template>
+
 <script setup>
 const stats = [
   { num: '17M+',    label: 'Tickets Sold by Our Founders' },
   { num: '17,000+', label: 'Events Produced Since 1994' },
-  { num: '400+',    label: 'Artists Booked Via This System' },
+  { num: '400+',    label: 'Artists on the Platform' },
   { num: '10',      label: 'Sold-Out Festivals & Counting' },
 ]
 </script>
+
 <style scoped>
 .stats-bar{background:var(--red)}
 .stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr}

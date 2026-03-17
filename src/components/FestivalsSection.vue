@@ -1,7 +1,7 @@
 <template>
   <div class="fests" id="festivals">
     <div class="fests-inner">
-      <div class="sec-label">The Track Record</div>
+      <div class="sec-label">Track Record</div>
       <div class="sec-head rv">
         <h2>Festivals That <span class="red">Proved It</span></h2>
         <p>Each lineup demand-validated before a single booking. Every one sold out.</p>
@@ -11,45 +11,51 @@
           <div class="fest-img">
             <img :src="f.img" :alt="f.name" />
             <div class="fest-fade"></div>
-            <span class="fest-badge">{{ f.badge }}</span>
+            <span v-if="f.badge" class="fest-badge">{{ f.badge }}</span>
           </div>
           <div class="fest-body">
             <div class="fest-name">{{ f.name }}</div>
             <div class="fest-curator">{{ f.curator }}</div>
-            <div class="fest-meta"><span v-for="line in f.meta" :key="line">{{ line }}</span></div>
-            <a href="#apply" class="btn-fest" :class="{ hot: f.hot }">Apply to Perform</a>
+            <div class="fest-meta">
+              <span v-for="line in f.meta" :key="line">{{ line }}</span>
+            </div>
+            <a href="https://app.playgigz.com/register" target="_blank" rel="noopener" class="btn-fest" :class="{ hot: f.hot }">Apply to Perform</a>
           </div>
         </div>
       </div>
       <div class="artist-cloud rv">
-        <div class="ac-label">Artists already booked through this system</div>
+        <div class="ac-label">Artists already on the platform</div>
         <div class="ac-names">
           <span v-for="a in artists" :key="a.name" class="ac-name" :class="{ hl: a.hl }">{{ a.name }}</span>
         </div>
-        <div class="ac-foot"><strong>These aren't aspirational names.</strong> These are artists who were evaluated by this system, booked based on predicted demand, and performed in front of sold-out crowds.</div>
+        <div class="ac-foot"><strong>These aren't just names.</strong> These are artists whose demand data lives inside Gigz — use it to find where your audience overlaps and where you should play next.</div>
       </div>
     </div>
   </div>
 </template>
+
 <script setup>
-import { img_ember26, img_blue24, img_sun, img_tool } from '../assets/images.js'
+import { img_ember26, img_blue24, img_tool, img_sun } from '../assets/images.js'
+
 const festivals = [
-  { name:'Ember Shores 2026',    curator:'ILLENIUM & Friends',      badge:'⭐ On Sale Now', hot:true,  img:img_ember26, meta:['📍 Riviera Maya, Mexico','🗓 Nov 20–22, 2026','✦ ILLENIUM + Lineup TBA'] },
-  { name:'Paradise Blue',        curator:'Excision Presents',        badge:'Sold Out',       hot:false, img:img_blue24,  meta:['📍 Cancún, Mexico','🗓 Annual since 2022','✦ Excision 3 Sets'] },
-  { name:'Sun Soaked',           curator:'deadmau5 & Kaskade',       badge:'Sold Out',       hot:false, img:img_sun,     meta:['📍 Cancún, Mexico','🗓 Annual · December','✦ Kaskade + deadmau5'] },
-  { name:'Tool in the Sand',     curator:'Tool · Primus · Mastodon', badge:'Sold Out',       hot:false, img:img_tool,    meta:['📍 Punta Cana, DR','🗓 March 2025','✦ Coheed · EODM'] },
+  { name: 'Ember Shores 2026', curator: 'ILLENIUM & Friends',      badge: '⭐ On Sale Now', hot: true,  img: img_ember26, meta: ['📍 Riviera Maya, Mexico', '🗓 Nov 20–22, 2026'] },
+  { name: 'Paradise Blue',     curator: 'Excision Presents',        badge: 'Sold Out',       hot: false, img: img_blue24,  meta: ['📍 Cancún, Mexico', '🗓 Annual since 2022'] },
+  { name: 'Tool in the Sand',  curator: 'Tool · Primus · Mastodon', badge: 'Sold Out',       hot: false, img: img_tool,    meta: ['📍 Punta Cana, DR', '🗓 March 2025'] },
+  { name: 'Sun Soaked',        curator: 'deadmau5 & Kaskade',       badge: null,             hot: false, img: img_sun,     meta: ['📍 Cancún, Mexico', '🗓 Annual · December', '🎟 90% Sold Out'] },
 ]
+
 const artists = [
-  {name:'ILLENIUM',hl:true},{name:'Excision',hl:true},{name:'deadmau5',hl:true},{name:'Kaskade',hl:true},
-  {name:'Tool',hl:true},{name:'Primus',hl:true},{name:'Mastodon',hl:true},
-  {name:'William Black'},{name:'Sullivan King'},{name:'Ray Volpe'},{name:'Subtronics'},{name:'Gareth Emery'},
-  {name:'Seven Lions'},{name:'Slander'},{name:'Grabbitz'},{name:'Dillon Francis'},{name:'CloZee'},
-  {name:'Bear Grillz'},{name:'Wooli'},{name:'ATLiens'},{name:'Svdden Death'},{name:'Eptic'},
-  {name:'Trivecta'},{name:'Haliene'},{name:'Blanke'},{name:'Dab The Sky'},{name:'Kareem Martin'},
-  {name:'James Egbert'},{name:'Jessica Audiffred'},{name:'Coheed & Cambria'},
-  {name:'Eagles of Death Metal'},{name:"King's X"},{name:'+ 370 more'},
+  { name: 'ILLENIUM', hl: true }, { name: 'Excision', hl: true }, { name: 'deadmau5', hl: true },
+  { name: 'Kaskade', hl: true }, { name: 'Tool', hl: true }, { name: 'Primus', hl: true }, { name: 'Mastodon', hl: true },
+  { name: 'William Black' }, { name: 'Sullivan King' }, { name: 'Ray Volpe' }, { name: 'Subtronics' },
+  { name: 'Gareth Emery' }, { name: 'Seven Lions' }, { name: 'Slander' }, { name: 'Grabbitz' },
+  { name: 'Dillon Francis' }, { name: 'CloZee' }, { name: 'Bear Grillz' }, { name: 'Wooli' },
+  { name: 'ATLiens' }, { name: 'Svdden Death' }, { name: 'Eptic' }, { name: 'Trivecta' },
+  { name: 'Haliene' }, { name: 'Blanke' }, { name: 'Coheed & Cambria' }, { name: 'Eagles of Death Metal' },
+  { name: '+ 370 more' },
 ]
 </script>
+
 <style scoped>
 .fests{padding:52px 20px;background:var(--black)}
 .fests-inner{max-width:1280px;margin:0 auto}
@@ -85,9 +91,6 @@ const artists = [
   .sec-head p{text-align:right;max-width:360px}
   .fest-grid{grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
   .fest-img{height:180px}
-  .fest-name{font-size:1rem}
-  .fest-curator{font-size:.7rem}
-  .fest-meta{font-size:.73rem}
   .fest-badge{font-size:.58rem;padding:3px 9px;top:10px;left:10px}
   .btn-fest{font-size:.7rem;padding:9px}
   .artist-cloud{padding:32px 36px}

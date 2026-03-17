@@ -3,7 +3,7 @@
   --red:#E31837;--red2:#FF1F3D;--black:#060608;--dark:#0e0e10;
   --card:#141416;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
   --muted:rgba(255,255,255,.42);--muted2:rgba(255,255,255,.68);
-  --green:#00C96B;--amber:#FFB800;
+  --green:#00C96B;--amber:#FFB800;--purple:#5B5BD6;
   --f:'Inter',sans-serif;--ft:'Inter Tight',sans-serif;
 }
 html{scroll-behavior:smooth}

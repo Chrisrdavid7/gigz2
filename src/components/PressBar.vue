@@ -10,11 +10,13 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { img_rs, img_edmtunes, img_edmid, img_revolver, img_edm } from '../assets/images.js'
 </script>
+
 <style scoped>
-.press{padding:20px;background:var(--black);border-bottom:1px solid var(--border)}
+.press{padding:20px;background:var(--dark);border-bottom:1px solid var(--border)}
 .press-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center}
 .press-lbl{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.18);width:100%;text-align:center}
 .press-logo{height:15px;width:auto;opacity:.35;filter:grayscale(1) brightness(3);transition:opacity .2s}
